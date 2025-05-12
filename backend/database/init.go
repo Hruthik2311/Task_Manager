@@ -35,19 +35,31 @@ func InitDB() (*sql.DB, error) {
 		return nil, fmt.Errorf("failed to ping database: %v", err)
 	}
 
-	// Read schema file
-	schemaPath := filepath.Join("database", "schema.sql")
-	schema, err := os.ReadFile(schemaPath)
+	// Check if tables exist
+	var tableExists bool
+	err = db.QueryRow("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'users')").Scan(&tableExists)
 	if err != nil {
-		return nil, fmt.Errorf("failed to read schema file: %v", err)
+		return nil, fmt.Errorf("failed to check if tables exist: %v", err)
 	}
 
-	// Execute schema
-	_, err = db.Exec(string(schema))
-	if err != nil {
-		return nil, fmt.Errorf("failed to execute schema: %v", err)
+	// Only run schema if tables don't exist
+	if !tableExists {
+		// Read schema file
+		schemaPath := filepath.Join("database", "schema.sql")
+		schema, err := os.ReadFile(schemaPath)
+		if err != nil {
+			return nil, fmt.Errorf("failed to read schema file: %v", err)
+		}
+
+		// Execute schema
+		_, err = db.Exec(string(schema))
+		if err != nil {
+			return nil, fmt.Errorf("failed to execute schema: %v", err)
+		}
+		log.Println("Database schema initialized successfully")
+	} else {
+		log.Println("Database tables already exist, skipping schema initialization")
 	}
 
-	log.Println("Database initialized successfully")
 	return db, nil
 } 
