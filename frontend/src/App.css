@@ -1,0 +1,241 @@
+body {
+  background: #f5f6fa;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
+
+.app-card {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 32px 32px 24px 32px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #e0e0e0;
+}
+
+h2 {
+  color: #3a2fd8;
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: 700;
+}
+
+.add-task-title {
+  color: #3a2fd8;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+input, textarea, select {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  background: #fafbfc;
+  transition: border 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  border: 1.5px solid #3a2fd8;
+  outline: none;
+}
+
+button[type="submit"] {
+  background: #3a2fd8;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+button[type="submit"]:hover:enabled {
+  background: #2a1bbf;
+}
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.task-list-title {
+  color: #3a2fd8;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.task-list {
+  margin-top: 8px;
+}
+
+.task-item {
+  background: #fafbfc;
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px #ececec;
+  display: flex;
+  flex-direction: column;
+}
+.task-title {
+  font-weight: 600;
+  font-size: 1.08rem;
+  margin-bottom: 4px;
+}
+.status-label {
+  color: #bfa100;
+  font-size: 0.98rem;
+  margin-bottom: 8px;
+}
+
+.btn-edit {
+  background: #2979ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 18px;
+  margin-right: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-edit:hover {
+  background: #1565c0;
+}
+.btn-delete {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-delete:hover {
+  background: #b71c1c;
+}
+
+.filter-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+@media (max-width: 700px) {
+  .app-card {
+    max-width: 98vw;
+    padding: 12px 2vw 12px 2vw;
+  }
+}
+
+.auth-form-centered {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7fb;
+}
+
+.auth-form-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px #e0e0e0;
+  padding: 32px 32px 24px 32px;
+  min-width: 340px;
+  max-width: 90vw;
+}
+
+.auth-form-card input {
+  margin-bottom: 0;
+}
+
+.auth-form-card button[type="submit"] {
+  margin-top: 8px;
+}
+
+.logout-bar {
+  position: absolute;
+  top: 24px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #ececec;
+  padding: 12px 24px;
+  font-size: 1rem;
+  min-width: 220px;
+  z-index: 100;
+}
+
+.logout-bar span {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.logout-bar button {
+  background: #3a2fd8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+.logout-bar button:hover {
+  background: #2a1bbf;
+}
+
+.auth-bg {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #f7f7fb 60%, #e0e7ff 100%),
+    url('https://www.transparenttextures.com/patterns/graphy.png'),
+    url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80');
+  background-size: auto, auto, cover;
+  background-repeat: repeat, no-repeat, no-repeat;
+  background-position: top left, center, center;
+  padding-top: 0;
+  position: relative;
+}
+
+.auth-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.7);
+  z-index: 0;
+}
+
+.auth-heading {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #3a2fd8;
+  margin-top: 0;
+  padding-top: 48px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #e0e0e0;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-form-centered, .auth-form-card {
+  position: relative;
+  z-index: 1;
+}
