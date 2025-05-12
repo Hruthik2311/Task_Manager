@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS tasks;
-
 -- Create users table
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
